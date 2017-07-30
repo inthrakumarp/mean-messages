@@ -53,6 +53,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
                         ? '?token=' + localStorage.getItem('token')
                         : '';
+        // return this.http.patch('http://localhost:3000/message/' + message.messageId + token, body, {headers: headers})
         return this.http.patch('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
             // the map() returns the response as an observable implicitly
             // .json() is used to extract the data attached to the response (Strips out the headers)
@@ -65,6 +66,7 @@ export class MessageService {
     }
 
     getMessage() {
+        // return this.http.get('http://localhost:3000/message')
         return this.http.get('https://obscure-mesa-97228.herokuapp.com/message')
             .map((response: Response) => {
                 const messages = response.json().obj;
@@ -94,6 +96,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
                         ? '?token=' + localStorage.getItem('token')
                         : '';
+        // return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
         return this.http.delete('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token)
             // the map() returns the response as an observable implicitly
             // .json() is used to extract the data attached to the response (Strips out the headers)
