@@ -32,8 +32,7 @@ var MessageService = (function () {
             ? '?token=' + localStorage.getItem('token')
             : '';
         // return this.http.post('http://localhost:3000/message' + token, body, {headers: headers})
-        // return this.http.post('https://obscure-mesa-97228.herokuapp.com/message' + token, body, {headers: headers})
-        return this.http.post(this.siteUrl + '/message' + token, body, { headers: headers })
+        return this.http.post('https://obscure-mesa-97228.herokuapp.com/message' + token, body, { headers: headers })
             .map(function (response) {
             var result = response.json();
             var message = new Message(result.obj.content, result.obj.user.firstName, result.obj._id, result.obj.user._id);
@@ -57,8 +56,7 @@ var MessageService = (function () {
             ? '?token=' + localStorage.getItem('token')
             : '';
         // return this.http.patch('http://localhost:3000/message/' + message.messageId + token, body, {headers: headers})
-        // return this.http.patch('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
-        return this.http.patch(this.siteUrl + '/message/' + message.messageId + token, body, { headers: headers })
+        return this.http.patch('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token, body, { headers: headers })
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             _this.errorService.handleError(error.json());
@@ -68,8 +66,7 @@ var MessageService = (function () {
     MessageService.prototype.getMessage = function () {
         var _this = this;
         // return this.http.get('http://localhost:3000/message')
-        // return this.http.get('https://obscure-mesa-97228.herokuapp.com/message')
-        return this.http.get(this.siteUrl + '/message')
+        return this.http.get('https://obscure-mesa-97228.herokuapp.com/message')
             .map(function (response) {
             var messages = response.json().obj;
             var transformedMessages = [];
@@ -95,8 +92,7 @@ var MessageService = (function () {
             ? '?token=' + localStorage.getItem('token')
             : '';
         // return this.http.delete('http://localhost:3000/message/' + message.messageId + token)
-        // return this.http.delete('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token)
-        return this.http.delete(this.siteUrl + '/message/' + message.messageId + token)
+        return this.http.delete('https://obscure-mesa-97228.herokuapp.com/message/' + message.messageId + token)
             .map(function (response) { return response.json(); })
             .catch(function (error) {
             _this.errorService.handleError(error.json());
